@@ -1,0 +1,17 @@
+package com.test.java.di02;
+
+public class Service {
+
+	//의존 주입
+	//private Hong hong;
+	private Employee employee;
+	
+	public Service(Employee employee) {
+		this.employee = employee;
+	}
+	
+	public void doSomething() {
+		this.employee.work();
+	}
+	
+}

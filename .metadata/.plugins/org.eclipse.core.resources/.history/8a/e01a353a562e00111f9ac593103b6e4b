@@ -1,0 +1,26 @@
+package com.test.java.di03;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class Main {
+	
+	public static void main(String[] args) {
+		
+		
+		//객체 생성 + 관리 + 소멸 > 스프링 역할 > 스프링 컨테이너
+		
+		Hong o1 = new Hong();
+		o1.work();
+		
+		ApplicationContext context = new ClassPathXmlApplicationContext("com/test/java/di03/di03.xml");
+		
+		Hong o2 = (Hong)context.getBean("hong");
+		o2.work();
+		
+		Lee o3 = (Lee)context.getBean("lee");
+		o3.work()
+		
+	}
+	
+}

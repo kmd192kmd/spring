@@ -1,0 +1,12 @@
+package com.test.java.di02;
+
+public class Service {
+
+	//의존 주입
+	//Private Hong hong;
+	
+	public void doSomething() {
+		
+	}
+	
+}

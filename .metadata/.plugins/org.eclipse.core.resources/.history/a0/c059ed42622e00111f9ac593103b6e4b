@@ -1,0 +1,7 @@
+package com.test.java.aop;
+
+public interface Memo {
+
+	void add(String memo);
+	
+}

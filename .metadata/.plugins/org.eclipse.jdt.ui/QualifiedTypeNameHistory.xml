@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="javax.swing.colorchooser.ColorChooserComponentFactory"/>
+    <fullyQualifiedTypeName name="com.test.java.di01.Service"/>
+    <fullyQualifiedTypeName name="com.test.java.di01.Hong"/>
+    <fullyQualifiedTypeName name="com.test.java.di02.Employee"/>
+    <fullyQualifiedTypeName name="java.util.Calendar"/>
+    <fullyQualifiedTypeName name="com.test.java.aop.Logger"/>
+    <fullyQualifiedTypeName name="org.springframework.context.ApplicationContext"/>
+    <fullyQualifiedTypeName name="org.springframework.context.support.ClassPathXmlApplicationContext"/>
+</qualifiedTypeNameHistroy>

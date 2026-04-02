@@ -1,0 +1,5 @@
+package com.test.java.di02;
+
+public interface Employee {
+	void work();
+}

@@ -1,0 +1,9 @@
+package com.test.java.aop;
+
+public class Main {
+
+	public void main(String[] args) {
+	
+		
+	}
+}

@@ -19,9 +19,30 @@ public class Main {
 
 		//m1();
 		//m2();
-		m3();
+		//m3();
+		m4();
 		
 	}//main
+
+	private static void m4() {
+		
+		ApplicationContext context 
+		= new ClassPathXmlApplicationContext("com/test/java/aop/memo.xml");
+	
+		Memo memo = (Memo)context.getBean("memo");
+		
+		//memo.addMemo("메모를 작성합니다.");
+		//memo.del("1");
+		
+		//boolean result = memo.del("1");
+		
+		try {
+			System.out.println(memo.readMemo("4"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 
 	private static void m3() {
 		

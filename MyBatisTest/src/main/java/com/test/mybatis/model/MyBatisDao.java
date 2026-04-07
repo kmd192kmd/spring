@@ -2,6 +2,7 @@ package com.test.mybatis.model;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
@@ -111,7 +112,7 @@ public class MyBatisDao {
 		//3. Statement
 		//4. executeQuery()
 		//5. ResultSet
-		//6. List<AddressDto> names
+		//6. List<Dto> names
 		//7. while (rs.next()) {}
 		//8. rs.getString("name")
 		//9. names.add(name)
@@ -119,6 +120,97 @@ public class MyBatisDao {
 		
 		return template.selectList("address.m8");
 	}
+
+	public List<AddressDto> m9(Map<String, String> map) {
+		
+		//동등 비교
+		return template.selectList("address.m9", map);
+	}
+	
+	public List<AddressDto> m10(int age) {
+	
+		//우위 비교
+		//.. where age >= 10
+		return template.selectList("address.m10", age);
+	}
+	
+	public List<AddressDto> m11(String word) {
+		
+		//Like 검색
+		//.. where address like '%강남%'
+		return template.selectList("address.m11", word);
+	}
+	
+	public List<AddressDto> m12(String gender) {
+		
+		//- m12.do?gender=m
+		//- m12.do?gender=f
+		//- m12.do?gender=all
+		return template.selectList("address.m12", gender);
+	} 
+	
+	public List<AddressDto> m13(AddressDto dto) {
+		
+		//- m13.do?age=20
+		//- m13.do?age=20&gender=m
+		//- m13.do?gender=m
+		//- m13.do?address=강남
+		
+		//- where age = 20
+		//- where gender = 'f'
+		//- where address like '%강남%'
+		//- where age = 20 and gender = 'f'
+		//- where age = 20 and address like '%강남%'
+		//- where age = 20 and gender = 'f' and address like '%강남%'
+		
+		return template.selectList("address.m13", dto);
+	} 
+	
+	public List<InsaDto> m14(List<String> buseo) {
+		
+		//mybatis.query("id", 매개변수)
+		//- 단일값
+		//- Map
+		//- Dto
+		//- List
+		
+		//- where bueso = '영업부' or buseo = '총무부' or buseo = '개발부'
+		//- where buseo in ('영업부', '총무부', '개발부')
+				
+		return template.selectList("address.m14", buseo);
+	}
+
+	public void add(AddressDto dto) {
+		
+		template.insert("address.add", dto);
+	}
+
+	public void addPoint() {
+		
+		template.insert("address.addPoint");		
+	} 
+	
+	
+	public List<AddressPointDto> m16() {
+		
+		//조인
+		//- tblAddress + tblPoint
+		
+		return template.selectList("address.m16");
+	}
+
+	public List<AddressDto> m17() {
+		
+		return template.selectList("address.m17");
+	}
+
+	public List<InsaDto> m18() {
+		
+		return template.selectList("address.m18");
+	}
+	
+	
+	
 
 }
 

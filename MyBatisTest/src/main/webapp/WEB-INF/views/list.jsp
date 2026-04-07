@@ -1,40 +1,98 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title></title>
-<link rel="stylesheet" href="http://bit.ly/3WJ5ilK" />
+	<meta charset="UTF-8">
+	<title></title>
+    <link rel="stylesheet" href="http://bit.ly/3WJ5ilK" />
 </head>
 <body>
 	<!-- list.jsp -->
-	<h1>결과</h1>
-	
-	<table>
-		<tr>
-			<td>번호</td>
-			<td>이름</td>
-			<td>나이</td>
-			<td>주소</td>
-			<td>성별</td>
-		</tr>
-		<c:forEach items="${list }" var="adto">
-		<tr>
-			<td>${adto.seq }</td>
-			<td>${adto.name }</td>
-			<td>${adto.age }</td>
-			<td>${adto.address }</td>
-			<td>${adto.gender }</td>
-		</tr>
-		</c:forEach>
-	</table>
-
+    <h1>주소록</h1>
+    
+    <table>
+        <tr>
+            <th>번호</th>
+            <th>이름</th>
+            <th>나이</th>
+            <th>성별</th>
+            <th>주소</th>
+        </tr>
+        <c:forEach items="${list}" var="dto">
+        <tr>
+            <td>${dto.seq}</td>
+            <td>${dto.name}</td>
+            <td>${dto.age}</td>
+            <td>${dto.gender}</td>
+            <td>${dto.address}</td>
+        </tr>
+        </c:forEach>
+    </table>
+    
+    <hr>
+    
+    <h1>주소록</h1>
+    
+    <table>
+        <tr>
+            <th>번호</th>
+            <th>이름</th>
+            <th>나이</th>
+            <th>성별</th>
+            <th>주소</th>
+            <th>포인트</th>
+            <th>급여</th>
+        </tr>
+        <c:forEach items="${alist}" var="dto">
+        <tr>
+            <td>${dto.seq}</td>
+            <td>${dto.name}</td>
+            <td>${dto.age}</td>
+            <td>${dto.gender}</td>
+            <td>${dto.address}</td>
+            <td>${dto.pdto.point}</td>
+        </tr>
+        </c:forEach>
+    </table>
+    
+    <hr>
+    
+    <h1>주소록</h1>
+    
+    <table>
+        <tr>
+            <th>번호</th>
+            <th>이름</th>
+            <th>직위</th>
+            <th>급여</th>
+            <th>프로젝트</th>
+        </tr>
+        <c:forEach items="${ilist}" var="dto">
+        <tr>
+            <td>${dto.num}</td>
+            <td>${dto.name}</td>
+            <td>${dto.jikwi}</td>
+            <td>${dto.salary}</td>
+            <td>
+                <ul>
+                <c:forEach items="${dto.project}" var="pdto">
+                    <li>${pdto.name }</li>
+                </c:forEach>
+                </ul>
+            </td>
+        </tr>
+        </c:forEach>
+    </table>
+    
 	<script src="https://bit.ly/4cMuheh"></script>
-	<script>
-		
-	</script>
-
+    <script>
+    
+    </script>
 </body>
 </html>
+
+
+
+
+

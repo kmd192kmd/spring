@@ -3,6 +3,7 @@ package com.test.mybatis.model;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -105,7 +106,6 @@ public class MyBatisDaoTests {
 		assertEquals(6, list.size());
 		
 		System.out.println(list);
-		
 	}
 	
 	@Test
@@ -115,8 +115,72 @@ public class MyBatisDaoTests {
 		
 		assertEquals(6, list.size());
 		
+		//[AddressDto(seq=6, name=돼지, age=3, address=서울시 강남구 대치동, gender=m), AddressDto(seq=1, name=홍철수, age=6, address=서울시 강남구 역삼동, gender=m), AddressDto(seq=2, name=강아지, age=3, address=서울시 강남구 역삼동, gender=m), AddressDto(seq=3, name=고양이, age=2, address=서울시 강동구 천호동, gender=f), AddressDto(seq=4, name=병아리, age=1, address=서울시 강동구 둔촌동, gender=m), AddressDto(seq=5, name=거북이, age=100, address=서울시 강동구 길동, gender=m)]
 		System.out.println(list);
 		
+	}
+	
+	
+	@Test
+	public void testM10() {
+		
+		List<AddressDto> list = dao.m10(10);
+		
+		assertEquals(5, list.size());
+		
+	}
+	
+	@Test
+	public void testM11() {
+		
+		List<AddressDto> list = dao.m11("강남");
+		
+		assertEquals(3, list.size());
+	}
+	
+	@Test
+	public void testM12() {
+		
+		List<AddressDto> list = dao.m12("all");
+		
+		assertEquals(6, list.size());
+	}
+	
+	@Test
+	public void testM13() {
+		
+		AddressDto dto = new AddressDto();
+		//dto.setAge("10");
+		//dto.setGender("m");
+		//dto.setAddress("강남");
+		
+		List<AddressDto> list = dao.m13(dto);
+		
+				
+		//assertEquals(6, list.size());
+		System.out.println(list);
+		
+	}
+	
+	
+	@Test
+	public void testM14() {
+		
+		List<String> buseo = Arrays.asList("영업부", "총무부", "개발부");
+		
+		List<InsaDto> list = dao.m14(buseo);
+		
+		System.out.println(list);
+		
+	}
+	
+	@Test
+	public void testM16() {
+		
+		List<AddressPointDto> list = dao.m16();
+		
+		System.out.println(list);
+				
 	}
 
 }

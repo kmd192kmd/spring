@@ -1,1 +1,15 @@
-/.metadata/
+# Eclipse 관련 설정
+.metadata/
+.settings/
+.classpath
+.project
+
+# Maven 빌드 결과물
+target/
+
+# 로그 파일
+*.log
+
+# OS 관련 임시 파일
+Thumbs.db
+.DS_Store

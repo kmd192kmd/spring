@@ -1,3 +1,4 @@
+
 -- OpenAPITest > script.sql
 
 -- 마커 테이블(좌표)

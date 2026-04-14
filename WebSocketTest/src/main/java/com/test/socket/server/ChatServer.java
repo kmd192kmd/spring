@@ -1,5 +1,6 @@
 package com.test.socket.server;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,8 @@ import lombok.ToString;
 
 @ServerEndpoint("/chatserver.do")
 public class ChatServer {
+	
+	private static List<List<User>> roomList;
 	
 	//현재 채팅 서버에 접속한 모든 클라이언트 > 배열
 	private static List<User> userList; //단톡방에 있는 모든 사람들
@@ -80,10 +83,75 @@ public class ChatServer {
 			
 			//user > session, name
 			
-			//새로운 유저가 접속했습니다. > 모든 사람에게 알려주기
 			
+			
+			//새로운 유저가 접속했습니다. > 모든 사람에게 알려주기
+			//broadcast > 메시지 전달
+			for (User u : userList) {
+				
+				//당사자 빼고 나머지 사람들
+				if (u.session != session) {
+					try {
+						u.session.getBasicRemote().sendText(msg);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+				
+			}
+			
+			
+		} else if(message.getCode().equals("2")) {
+			
+			//유저가 나갔습니다.
+			System.out.println("클라이언트가 나갔습니다.");
+			
+			for (User u : userList) {
+				if (u.session == session) {
+					userList.remove(u);
+					break;
+				}
+			}
+			
+			for (User u : userList) {
+				try {
+					u.session.getBasicRemote().sendText(msg);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			
+			
+		} else if(message.getCode().equals("3") || message.getCode().equals("5")) {
+			
+			//대화 내용 > 나머지 사람들에게 그대로 전달
+			for (User u : userList) {
+				if(u.session != session) {
+					try {
+						u.session.getBasicRemote().sendText(msg);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+			
+		} else if(message.getCode().equals("4")) {
+			
+			//귓속말
+			for (User u : userList) {
+				if(u.name.equals(message.getReceiver())) {
+					try {
+						u.session.getBasicRemote().sendText(msg);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					break;
+				}
+			}
 			
 		}
+		
 		
 		
 	}

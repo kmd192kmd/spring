@@ -20,6 +20,10 @@
     <hr>
     <div>
         <button type="button" class="in">들어가기</button>
+        
+        <button type="button" class="in" data-name="강아지">들어가기(강아지)</button>
+        <button type="button" class="in" data-name="고양이">들어가기(고양이)</button>
+        <button type="button" class="in" data-name="병아리">들어가기(병아리)</button>
     </div>
 	
 	<script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
@@ -29,7 +33,16 @@
     
         $('.in').click(() => {
         	
-        	let name = $('#name').val().trim();
+        	//let name = $('#name').val().trim();
+        	
+        	let name =  $(event.target).data('name');
+        	
+        	if(name == null || name == ''){
+        		name = $('#name').val().trim();
+        	} else {
+        		$('#name').val(name);
+        	}
+        	
         	
         	const child = window.open('/socket/chat.do', 'chat', 'width=406, height=518');
         	
@@ -50,6 +63,8 @@
         	
         	
         });
+        
+        
     
     </script>
 </body>

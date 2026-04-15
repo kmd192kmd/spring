@@ -50,6 +50,8 @@ create table member_auth (
 );
 
 select * from member;
+select * from member_auth;
+delete from member where memberid = 'kim';
 
 insert into member_auth values ('dog', 'ROLE_MEMBER');
 insert into member_auth values ('cat', 'ROLE_MEMBER');
@@ -59,8 +61,19 @@ insert into member_auth values ('tiger', 'ROLE_ADMIN');
 commit;
 
 
+-- users-by-username-query
+select memberid as username, memberpw as password, enabled from member where memberid = 'dog';
 
+-- authorities-by-username-query
+select memberid as username, auth as authority from member_auth where memberid = 'dog';
 
-
-
+select
+    m.*,
+    a.*,
+    m.memberid as memberid,
+    a.memberid as amemberid
+from member m
+    inner join member_auth a
+        on m.memberid = a.memberid
+            where m.memberid = 'tiger';
 

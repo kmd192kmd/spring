@@ -1,5 +1,7 @@
 package com.test.java.model;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -15,6 +17,9 @@ public class MemberDto {
 	private String gender;
 	private String enabled;
 	private String regdate;
+	
+	private List<AuthDto> authList;
+	
 }
 
 
